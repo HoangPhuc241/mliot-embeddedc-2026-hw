@@ -1,0 +1,13 @@
+Câu 4.2:
+- BIKE_MODEL -> Phân vùng bộ nhớ .rodata
+- total_odometer -> Phân vùng bộ nhớ .bss
+- current_speed -> Phân vùng bộ nhớ Stack
+Câu 4.3:
+- Trên môi trường máy tính: - Khi gọi "crash_simulation()", chương trình sẽ liên tục thực hiện gọi đệ quy mà không có điều kiện dừng, khiến stack bị tràn (stack overflow).
+- Nếu chạy trên vi điều khiển: CPU sẽ phát hiện HardFault và nhảy vào hàm ngắt HardFault_Handler().
+Câu 5:
+Chọn cách 1.
+
+GIẢI THÍCH DỰA TRÊN BẢN CHẤT .DATA VÀ .BSS:
+- Cách 1: Trình biên dịch hiểu đây là vùng nhớ trống và đưa toàn bộ mảng vào phân vùng .bss nên chỉ cần dành ra 40 KB trên RAM. Vì RAM đang trống 128 KB RAM nên chương trình biên dịch và nạp thành công.
+- Cách 2: Có giá trị {1, 2, 3}, mảng bị ép vào phân vùng .data. Do bộ nhớ Flash của xe chỉ còn trống đúng 20 KB, việc nạp 40 KB dữ liệu vào sẽ gây quá tải và báo lỗi biên dịch.
